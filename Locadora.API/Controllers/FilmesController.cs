@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Locadora.API.Model;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Locadora.API.Model;
 
 namespace Locadora.API.Controllers
 {
@@ -24,7 +23,14 @@ namespace Locadora.API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Filme>>> GetFilmes()
         {
-            return await _context.Filmes.ToListAsync();
+            //var query = _context.Diretores.Include(r => r.Nome);
+            //return await _context.Filmes.ToListAsync();
+
+            return await _context
+                .Filmes
+                .Include(f => f.Diretor.Nome)
+                //.ThenInclude(f => f.Nome)
+                .ToListAsync();
         }
 
         // GET: api/Filmes/5
