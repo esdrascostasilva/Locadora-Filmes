@@ -11,48 +11,48 @@ namespace Locadora.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DiretoresController : ControllerBase
+    public class FilmesController : ControllerBase
     {
         private readonly ApiDbContext _context;
 
-        public DiretoresController(ApiDbContext context)
+        public FilmesController(ApiDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/Diretores
+        // GET: api/Filmes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Diretor>>> GetDiretores()
+        public async Task<ActionResult<IEnumerable<Filme>>> GetFilmes()
         {
-            return await _context.Diretores.ToListAsync();
+            return await _context.Filmes.ToListAsync();
         }
 
-        // GET: api/Diretores/5
+        // GET: api/Filmes/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Diretor>> GetDiretor(Guid id)
+        public async Task<ActionResult<Filme>> GetFilme(Guid id)
         {
-            var diretor = await _context.Diretores.FindAsync(id);
+            var filme = await _context.Filmes.FindAsync(id);
 
-            if (diretor == null)
+            if (filme == null)
             {
                 return NotFound();
             }
 
-            return diretor;
+            return filme;
         }
 
-        // PUT: api/Diretores/5
+        // PUT: api/Filmes/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutDiretor(Guid id, Diretor diretor)
+        public async Task<IActionResult> PutFilme(Guid id, Filme filme)
         {
-            if (id != diretor.Id)
+            if (id != filme.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(diretor).State = EntityState.Modified;
+            _context.Entry(filme).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace Locadora.API.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!DiretorExists(id))
+                if (!FilmeExists(id))
                 {
                     return NotFound();
                 }
@@ -73,37 +73,37 @@ namespace Locadora.API.Controllers
             return NoContent();
         }
 
-        // POST: api/Diretores
+        // POST: api/Filmes
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Diretor>> PostDiretor(Diretor diretor)
+        public async Task<ActionResult<Filme>> PostFilme(Filme filme)
         {
-            _context.Diretores.Add(diretor);
+            _context.Filmes.Add(filme);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetDiretor", new { id = diretor.Id }, diretor);
+            return CreatedAtAction("GetFilme", new { id = filme.Id }, filme);
         }
 
-        // DELETE: api/Diretores/5
+        // DELETE: api/Filmes/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Diretor>> DeleteDiretor(Guid id)
+        public async Task<ActionResult<Filme>> DeleteFilme(Guid id)
         {
-            var diretor = await _context.Diretores.FindAsync(id);
-            if (diretor == null)
+            var filme = await _context.Filmes.FindAsync(id);
+            if (filme == null)
             {
                 return NotFound();
             }
 
-            _context.Diretores.Remove(diretor);
+            _context.Filmes.Remove(filme);
             await _context.SaveChangesAsync();
 
-            return diretor;
+            return filme;
         }
 
-        private bool DiretorExists(Guid id)
+        private bool FilmeExists(Guid id)
         {
-            return _context.Diretores.Any(e => e.Id == id);
+            return _context.Filmes.Any(e => e.Id == id);
         }
     }
 }

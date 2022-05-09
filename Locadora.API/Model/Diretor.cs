@@ -7,12 +7,14 @@ namespace Locadora.API.Model
     {
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string Nome { get; set; }
+
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string DataNascimento { get; set; }
+
         public Sexo Sexo { get; set; }
 
         // EF Relations
-        public IEnumerable<Filme> Filmes { get; set; }
+        public virtual IEnumerable<Filme> Filmes { get; set; }
 
     }
 }

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Locadora.API.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    [Migration("20220509132209_Initial")]
+    [Migration("20220509175814_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,7 +52,7 @@ namespace Locadora.API.Migrations
                     b.Property<DateTime>("DataLancamento")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("DiretorId")
+                    b.Property<Guid>("DiretorId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Genero")
@@ -77,7 +77,9 @@ namespace Locadora.API.Migrations
                 {
                     b.HasOne("Locadora.API.Model.Diretor", "Diretor")
                         .WithMany("Filmes")
-                        .HasForeignKey("DiretorId");
+                        .HasForeignKey("DiretorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -50,7 +50,7 @@ namespace Locadora.API.Migrations
                     b.Property<DateTime>("DataLancamento")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("DiretorId")
+                    b.Property<Guid>("DiretorId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Genero")
@@ -75,7 +75,9 @@ namespace Locadora.API.Migrations
                 {
                     b.HasOne("Locadora.API.Model.Diretor", "Diretor")
                         .WithMany("Filmes")
-                        .HasForeignKey("DiretorId");
+                        .HasForeignKey("DiretorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

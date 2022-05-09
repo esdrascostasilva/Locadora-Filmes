@@ -26,11 +26,11 @@ namespace Locadora.API.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
+                    DiretorId = table.Column<Guid>(nullable: false),
                     Nome = table.Column<string>(nullable: false),
                     Genero = table.Column<string>(nullable: false),
                     duracao = table.Column<int>(nullable: false),
-                    DataLancamento = table.Column<DateTime>(nullable: false),
-                    DiretorId = table.Column<Guid>(nullable: true)
+                    DataLancamento = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -40,7 +40,7 @@ namespace Locadora.API.Migrations
                         column: x => x.DiretorId,
                         principalTable: "Diretores",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
