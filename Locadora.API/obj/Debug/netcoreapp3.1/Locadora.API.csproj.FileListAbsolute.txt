@@ -131,3 +131,4 @@ C:\Users\Esdras Costa\01.PROJECTS\LocadoraFilmes\Locadora.API\obj\Debug\netcorea
 C:\Users\Esdras Costa\01.PROJECTS\LocadoraFilmes\Locadora.API\obj\Debug\netcoreapp3.1\Locadora.API.dll
 C:\Users\Esdras Costa\01.PROJECTS\LocadoraFilmes\Locadora.API\obj\Debug\netcoreapp3.1\Locadora.API.pdb
 C:\Users\Esdras Costa\01.PROJECTS\LocadoraFilmes\Locadora.API\obj\Debug\netcoreapp3.1\Locadora.API.genruntimeconfig.cache
+C:\Users\Esdras Costa\01.PROJECTS\LocadoraFilmes\Locadora.API\obj\Debug\netcoreapp3.1\Locadora.API.csproj.AssemblyReference.cache

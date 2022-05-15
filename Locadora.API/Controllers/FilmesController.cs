@@ -24,13 +24,13 @@ namespace Locadora.API.Controllers
         public async Task<ActionResult<IEnumerable<Filme>>> GetFilmes()
         {
             //var query = _context.Diretores.Include(r => r.Nome);
-            //return await _context.Filmes.ToListAsync();
+            return await _context.Filmes.ToListAsync();
 
-            return await _context
-                .Filmes
-                .Include(f => f.Diretor.Nome)
-                //.ThenInclude(f => f.Nome)
-                .ToListAsync();
+            //return await _context
+            //    .Filmes
+            //    .Include(f => f.Diretor.Nome)
+            //    //.ThenInclude(f => f.Nome)
+            //    .ToListAsync();
         }
 
         // GET: api/Filmes/5
@@ -48,8 +48,6 @@ namespace Locadora.API.Controllers
         }
 
         // PUT: api/Filmes/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
         public async Task<IActionResult> PutFilme(Guid id, Filme filme)
         {
@@ -80,8 +78,6 @@ namespace Locadora.API.Controllers
         }
 
         // POST: api/Filmes
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
         public async Task<ActionResult<Filme>> PostFilme(Filme filme)
         {
